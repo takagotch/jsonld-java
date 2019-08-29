@@ -10,6 +10,24 @@ JsonLdOptions options = new JsondOptions();
 Object compact = JsondProcessor.compat(jsonObject, context, options);
 System.out.print(JsonUtils.toPrettyString(compact));
 
+ClassLoader oldContextCL = Thread.currentThread().getContextClassLoader();
+try {
+  Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
+  JsonLdProcessor.expand(input);
+} finally {
+  Thread.curretnThread().setContextClassLoader(oldContextCL);
+}
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 ```
